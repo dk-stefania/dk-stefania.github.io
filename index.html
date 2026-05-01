@@ -299,13 +299,59 @@
 
     /* АДАПТИВ */
     @media (max-width: 768px) {
-      .container { padding: 0 20px; }
-      .hero-inner { grid-template-columns: 1fr; gap: 30px; }
-      .hero-photo { width: 150px; height: 150px; }
-      .nav-links { gap: 14px; flex-wrap: wrap; justify-content: center; }
-      .services-grid { grid-template-columns: repeat(2, 1fr); }
-      .about-grid { grid-template-columns: 1fr; gap: 40px; }
-      .footer-inner { flex-direction: column; gap: 36px; }
+      /* контейнер */
+      .container { padding: 0 16px; }
+
+      /* 2) навбар — прилипает к верху, мелкий шрифт, плотнее */
+      .nav-inner { height: auto; padding: 10px 0; flex-wrap: wrap; gap: 6px; }
+      .nav-links { gap: 10px; flex-wrap: wrap; justify-content: center; }
+      .nav-links a { font-size: 0.65rem; }
+
+      /* 5) расстояние между блоками меньше на мобиле */
+      section { padding: 40px 0; }
+      .hero { padding: 36px 0 24px; } /* hero совсем близко к краю */
+
+      /* hero */
+      .hero-inner { grid-template-columns: 1fr; gap: 20px; }
+      .hero-photo { width: 130px; height: 130px; }
+
+      /* 3) статьи — карточки чуть уже на телефоне */
+      .article-card { width: 260px; }
+      .video-card { width: 300px; height: 180px; }
+
+      /* 4) telegram-строка — в колонку на мобиле */
+      .articles-tg-row { flex-direction: column; align-items: flex-start; gap: 10px; }
+
+      /* 1) книга — в колонку только на маленьких телефонах */
+      .book-card { max-width: 100%; }
+      .book-info { padding: 20px; }
+
+      /* услуги */
+      .services-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+
+      /* обо мне */
+      .about-grid { grid-template-columns: 1fr; gap: 30px; }
+      .about-stats { grid-template-columns: repeat(2, 1fr); }
+
+      /* футер */
+      .footer-inner { flex-direction: column; gap: 28px; }
+    }
+
+    /* планшет — книга остаётся горизонтальной, просто уже */
+    @media (min-width: 561px) and (max-width: 1024px) {
+      .book-card { grid-template-columns: 140px 1fr; }
+    }
+
+    /* очень маленькие экраны — книга вертикально */
+    @media (max-width: 560px) {
+      .book-card { grid-template-columns: 1fr; }
+      .book-cover { min-height: 200px; max-height: 240px; }
+    }
+
+    /* очень маленькие экраны */
+    @media (max-width: 400px) {
+      .services-grid { grid-template-columns: 1fr 1fr; }
+      .article-card { width: 230px; }
     }
   </style>
 </head>
