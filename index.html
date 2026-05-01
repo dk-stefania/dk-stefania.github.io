@@ -299,30 +299,30 @@
 
     /* АДАПТИВ */
     @media (max-width: 768px) {
-      /* контейнер */
       .container { padding: 0 16px; }
 
-      /* 2) навбар — прилипает к верху, мелкий шрифт, плотнее */
+      /* навбар — полностью непрозрачный, чётко прилипает */
+      .nav { background: #f5f3ef; backdrop-filter: none; -webkit-backdrop-filter: none; }
       .nav-inner { height: auto; padding: 10px 0; flex-wrap: wrap; gap: 6px; }
       .nav-links { gap: 10px; flex-wrap: wrap; justify-content: center; }
       .nav-links a { font-size: 0.65rem; }
 
-      /* 5) расстояние между блоками меньше на мобиле */
+      /* отступы между блоками */
       section { padding: 40px 0; }
-      .hero { padding: 36px 0 24px; } /* hero совсем близко к краю */
+      .hero { padding: 36px 0 24px; }
 
       /* hero */
       .hero-inner { grid-template-columns: 1fr; gap: 20px; }
       .hero-photo { width: 130px; height: 130px; }
 
-      /* 3) статьи — карточки чуть уже на телефоне */
+      /* карточки */
       .article-card { width: 260px; }
       .video-card { width: 300px; height: 180px; }
 
-      /* 4) telegram-строка — в колонку на мобиле */
+      /* telegram-строка */
       .articles-tg-row { flex-direction: column; align-items: flex-start; gap: 10px; }
 
-      /* 1) книга — в колонку только на маленьких телефонах */
+      /* книга */
       .book-card { max-width: 100%; }
       .book-info { padding: 20px; }
 
@@ -337,21 +337,18 @@
       .footer-inner { flex-direction: column; gap: 28px; }
     }
 
-    /* планшет — книга остаётся горизонтальной, просто уже */
+    /* планшет — книга горизонтальная */
     @media (min-width: 561px) and (max-width: 1024px) {
       .book-card { grid-template-columns: 140px 1fr; }
     }
 
-    /* очень маленькие экраны — книга вертикально */
+    /* телефон — книга вертикальная с ограниченной высотой */
     @media (max-width: 560px) {
       .book-card { grid-template-columns: 1fr; }
-      .book-cover { min-height: 200px; max-height: 240px; }
-    }
-
-    /* очень маленькие экраны */
-    @media (max-width: 400px) {
-      .services-grid { grid-template-columns: 1fr 1fr; }
+      .book-cover { overflow: hidden; }
+      .book-cover img { width: 100%; height: 180px !important; object-fit: cover; object-position: center top; display: block; }
       .article-card { width: 230px; }
+      .services-grid { grid-template-columns: 1fr 1fr; }
     }
   </style>
 </head>
