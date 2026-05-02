@@ -311,12 +311,12 @@
       .container { padding: 0 16px; }
 
       /* навбар — фиксированный, прилипает к потолку везде включая Telegram */
-      .nav { position: fixed; top: 0; left: 0; right: 0; width: 100%; background: #f5f3ef; backdrop-filter: none; -webkit-backdrop-filter: none; z-index: 1000; }
-      .nav-inner { height: auto; padding: 10px 0; flex-wrap: wrap; gap: 6px; }
-      .nav-links { gap: 10px; flex-wrap: wrap; justify-content: center; }
-      .nav-links a { font-size: 0.65rem; }
-      /* отступ сверху чтобы контент не прятался под навбаром */
-      body { padding-top: 80px; }
+      .nav { position: fixed !important; top: 0 !important; left: 0; right: 0; width: 100%; background: #f5f3ef; backdrop-filter: none; -webkit-backdrop-filter: none; z-index: 9999; }
+      .nav-inner { height: auto; padding: 8px 0; flex-wrap: wrap; gap: 4px; }
+      .nav-links { gap: 8px; flex-wrap: wrap; justify-content: center; }
+      .nav-links a { font-size: 0.62rem; }
+      /* отступ — берём с запасом, навбар 2 строки ≈ 70px */
+      body { padding-top: 90px; }
 
       /* отступы между блоками */
       section { padding: 40px 0; }
@@ -854,31 +854,6 @@
        Плавная прокрутка встроена в CSS: scroll-behavior: smooth
   ========================================== -->
   <script>
-    // Навбар — фикс для всех браузеров включая Telegram WebView
-    function fixNav() {
-      var nav = document.querySelector('.nav');
-      if (!nav) return;
-      if (window.innerWidth <= 768) {
-        // Принудительно вешаем на top:0 и считаем высоту
-        nav.style.position = 'fixed';
-        nav.style.top = '0';
-        nav.style.left = '0';
-        nav.style.right = '0';
-        nav.style.zIndex = '9999';
-        // Небольшая задержка чтобы браузер успел отрисовать nav
-        setTimeout(function() {
-          document.body.style.paddingTop = nav.offsetHeight + 'px';
-        }, 50);
-      } else {
-        nav.style.position = '';
-        nav.style.top = '';
-        document.body.style.paddingTop = '';
-      }
-    }
-    // Запускаем сразу при загрузке скрипта
-    fixNav();
-    window.addEventListener('load', fixNav);
-    window.addEventListener('resize', fixNav);
 
     function slideTrack(trackId, amount) {
       const track = document.getElementById(trackId);
