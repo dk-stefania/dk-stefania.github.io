@@ -871,9 +871,10 @@
 
     function slideTrack(trackId, amount) {
       const track = document.getElementById(trackId);
-      if (track) {
-        track.scrollBy({ left: amount, behavior: 'smooth' });
-      }
+      if (!track) return;
+      const maxScroll = track.scrollWidth - track.clientWidth;
+      const newPos = Math.min(Math.max(track.scrollLeft + amount, 0), maxScroll);
+      track.scrollTo({ left: newPos, behavior: 'smooth' });
     }
   </script>
 
